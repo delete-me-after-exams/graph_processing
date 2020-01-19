@@ -38,7 +38,7 @@ class BreadthFirstIterator(GraphIterator):
                 if neighbor in self.visited:
                     visited_count += 1
             if len(self.brothers[self.curr_pos-1].neighbors) == visited_count:
-                self.graph.notify_observers("У узла " + self.brothers[self.curr_pos-1].name + " имеются непосещенные соседи")
+                self.graph.notify_observers("У узла " + self.brothers[self.curr_pos-1].name + " не осталось непосещенных соседей")
 
             self.visited.append(self.brothers[self.curr_pos-1])
             return self.brothers[self.curr_pos-1]
@@ -63,8 +63,7 @@ class DepthFirstIterator(GraphIterator):
             if neighbor in self.visited:
                 visited_count += 1
         if len(node.neighbors) == visited_count:
-            self.graph.notify_observers(
-                "У узла " + node.name + " не осталось непосещенных соседей")
+            self.graph.notify_observers("У узла " + node.name + " не осталось непосещенных соседей")
 
         self.visited.append(node)
 
